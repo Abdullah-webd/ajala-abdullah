@@ -201,7 +201,7 @@ document.addEventListener('DOMContentLoaded', () => {
       submitBtn.style.backgroundColor = '#64748b';
       
       try {
-        const response = await fetch('http://localhost:3000/api/contact', {
+        const response = await fetch('/api/contact', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
