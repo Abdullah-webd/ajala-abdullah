@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const { Resend } = require('resend');
@@ -5,8 +6,8 @@ const { Resend } = require('resend');
 const app = express();
 const port = 3000;
 
-// Initialize Resend with the provided API Key
-const resend = new Resend('re_i8FPocXm_9PUTifqHT1RuZ2vD4VnBCiZr');
+// Initialize Resend with the provided API Key from .env
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 // Middleware
 app.use(cors()); // Allow cross-origin requests from your frontend
