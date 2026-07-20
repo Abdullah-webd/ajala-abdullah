@@ -1,20 +1,29 @@
 require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
+const path = require('path');
 const { Resend } = require('resend');
 
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 3000;
 
 // Initialize Resend with the provided API Key from .env
 const resend = new Resend(process.env.RESEND_API_KEY);
 
 // Middleware
-app.use(cors()); // Allow cross-origin requests from your frontend
-app.use(express.json()); // Parse JSON request bodies
+app.use(cors());
+app.use(express.json());
 
-// Serve static frontend files (index.html, style.css, script.js, assets)
-app.use(express.static(__dirname));
+// Serve static frontend files with explicit MIME types
+app.use(express.static(path.join(__dirname), {
+  setHeaders: (res, filePath) => {
+    if (filePath.endsWith('.css')) {
+      res.setHeader('Content-Type', 'text/css');
+    } else if (filePath.endsWith('.js')) {
+      res.setHeader('Content-Type', 'application/javascript');
+    }
+  }
+}));
 
 // Contact Form Endpoint
 app.post('/api/contact', async (req, res) => {
@@ -30,8 +39,8 @@ app.post('/api/contact', async (req, res) => {
 
   try {
     const { data, error } = await resend.emails.send({
-      from: 'onboarding@myschoolmanager.org', // Provided sender email
-      to: 'webmastersmma@gmail.com', // Your receiving email based on the contact section
+      from: 'onboarding@myschoolmanager.org',
+      to: 'webmastersmma@gmail.com',
       subject: `New Portfolio Message from ${name}`,
       html: `
         <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto;">
@@ -56,6 +65,11 @@ app.post('/api/contact', async (req, res) => {
     console.error('Server Error:', error);
     res.status(500).json({ success: false, error: error.message });
   }
+});
+
+// Fallback: serve index.html for any unmatched route
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'index.html'));
 });
 
 // Start the server
