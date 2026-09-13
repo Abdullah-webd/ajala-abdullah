@@ -1,18 +1,16 @@
 {
   "name": "ajala-abdullah-portfolio",
   "version": "2.0.0",
-  "description": "Portfolio of Ajala Abdullah — static site with a serverless contact form (Resend)",
+  "description": "Portfolio of Ajala Abdullah \u2014 static site with a serverless contact form (Resend)",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
     "dev": "vercel dev"
   },
   "dependencies": {
-    "resend": "^4.0.0"
-  },
-  "devDependencies": {
     "cors": "^2.8.5",
     "dotenv": "^17.4.2",
-    "express": "^4.21.0"
+    "express": "^4.21.0",
+    "resend": "^4.0.0"
   }
 }
