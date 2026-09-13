@@ -23,7 +23,7 @@ module.exports = async (req, res) => {
 
   try {
     const { data, error } = await resend.emails.send({
-      from: 'onboarding@myschoolmanager.org',
+      from: 'Portfolio Contact <onboarding@resend.dev>',
       to: 'webmastersmma@gmail.com',
       replyTo: email,
       subject: `New Portfolio Message from ${name}`,
