@@ -1318,3 +1318,246 @@ footer {
   }
 }
 
+
+/* ==========================================================================
+   Press strip ("As Featured In") — sits between the stats bar and Projects
+   ========================================================================== */
+.press-strip {
+  padding: 3rem 0;
+  background: var(--bg-primary);
+  border-bottom: 1px solid var(--border);
+}
+.press-strip-label {
+  text-align: center;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 1.75rem;
+}
+.press-logos {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  align-items: center;
+}
+.press-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem 1.25rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 1.5rem;
+  letter-spacing: -0.02em;
+  text-decoration: none;
+  color: var(--text-secondary);
+  background: var(--bg-primary);
+  filter: grayscale(1);
+  opacity: 0.75;
+  transition: var(--transition-normal);
+}
+.press-logo:hover {
+  filter: grayscale(0);
+  opacity: 1;
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--border-dark);
+}
+/* Outlet wordmark colours — used by both the strip and the press-card fallback */
+.press-logo--punch        { color: #d71920; letter-spacing: 0.02em; }
+.press-logo--businessday  { color: #0b2f5b; font-weight: 700; font-style: italic; }
+.press-logo--naijapreneur { color: #0f8a3c; }
+.press-logo--nidacity     { color: #1d4ed8; }
+
+/* ==========================================================================
+   Recognition section — press cards + hackathon cards
+   ========================================================================== */
+.sub-heading {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0 0 2rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--border);
+}
+.sub-heading i {
+  color: var(--accent);
+  font-size: 1.1rem;
+}
+.press-grid + .sub-heading {
+  margin-top: 5rem;
+}
+.press-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.75rem;
+}
+.press-card {
+  display: flex;
+  flex-direction: column;
+  background: var(--bg-primary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  text-decoration: none;
+  color: inherit;
+  transition: var(--transition-normal);
+}
+.press-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-xl);
+  border-color: var(--border-dark);
+}
+.press-img-wrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  background: var(--bg-tertiary);
+  overflow: hidden;
+}
+.press-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+  transition: var(--transition-normal);
+}
+.press-card:hover .press-img {
+  transform: scale(1.04);
+}
+/* Wordmark fallback — shown only when the article screenshot is missing */
+.press-fallback {
+  display: none;
+  position: absolute;
+  inset: 0;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 1.75rem;
+  letter-spacing: -0.02em;
+  background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-tertiary) 100%);
+}
+.press-img-wrapper.is-fallback .press-img { display: none; }
+.press-img-wrapper.is-fallback .press-fallback { display: flex; }
+.press-content {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+.press-outlet {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.6rem;
+}
+.press-headline {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 600;
+  line-height: 1.4;
+  color: var(--text-primary);
+  margin-bottom: 1.25rem;
+}
+.press-meta {
+  margin-top: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+.press-read {
+  color: var(--accent);
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  transition: var(--transition-fast);
+}
+.press-card:hover .press-read {
+  gap: 0.6rem;
+}
+
+/* Three hackathon cards side by side (was 2) */
+.achievement-cards {
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+.achievement-card {
+  padding: 2.5rem;
+}
+.achievement-badge {
+  left: 2.5rem;
+}
+.achievement-title {
+  font-size: 1.5rem;
+}
+.achievement-card.runner-up {
+  border: 2px solid #94a3b8;
+}
+.badge-silver {
+  background: linear-gradient(135deg, #64748b 0%, #94a3b8 100%);
+}
+.reward-silver {
+  color: #64748b;
+}
+
+/* Hero card now carries three items — keep it compact */
+.hackathon-highlight {
+  gap: 1rem;
+}
+.highlight-content h4 {
+  font-size: 0.95rem;
+}
+
+/* ---------- Responsive additions ---------- */
+@media (max-width: 1024px) {
+  .press-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .achievement-cards {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+}
+@media (max-width: 768px) {
+  .press-strip {
+    padding: 2.5rem 0;
+  }
+  .press-logos {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+  .press-logo {
+    font-size: 1.2rem;
+    padding: 0.85rem 1rem;
+  }
+  .press-grid + .sub-heading {
+    margin-top: 3.5rem;
+  }
+}
+@media (max-width: 600px) {
+  .press-grid {
+    grid-template-columns: 1fr;
+  }
+}
+@media (max-width: 480px) {
+  .achievement-card {
+    padding: 2rem;
+  }
+  .achievement-badge {
+    left: 2rem;
+  }
+}
