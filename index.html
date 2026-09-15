@@ -60,7 +60,7 @@
         <div class="hero-buttons">
           <a href="#projects" class="btn btn-primary">Explore Work <i class="fas fa-arrow-right"></i></a>
           <a href="#contact" class="btn btn-secondary">Get In Touch</a>
-          <a href="assets/Ajala-Abdullah-Resume.pdf?v=20260915" class="btn btn-secondary" target="_blank" rel="noopener" download="Ajala-Abdullah-Resume.pdf"><i class="fas fa-file-arrow-down"></i> Download Resume</a>
+          <a href="assets/Ajala-Abdullah-Resume.pdf?v=20260915b" class="btn btn-secondary" target="_blank" rel="noopener" download="Ajala-Abdullah-Resume.pdf"><i class="fas fa-file-arrow-down"></i> Download Resume</a>
         </div>
       </div>
       
@@ -177,6 +177,7 @@
               <li>Streaming agent with a live activity feed; ask about recent conversations on any channel.</li>
               <li>Draft → approve → send, including one-shot broadcast to all connected channels.</li>
               <li>Scheduled tasks that run an instruction on a cron and email you the result.</li>
+              <li>Eval harness: golden-set answers scored by an LLM judge plus scope-drift and prompt-injection tests — guardrails added from what it found.</li>
             </ul>
             <div class="project-tech">
               <span>Fastify + TypeScript</span>
@@ -269,7 +270,7 @@
             <p class="project-desc">An AI-powered study companion helping Nigerian students prepare for WAEC, NECO, and JAMB. StudyMaster transforms how students prepare with personalized study plans, smart practice, and expert guidance.</p>
             <div class="project-deploy"><i class="fas fa-handshake"></i> Deployed to 50+ active students preparing for WAEC, NECO and JAMB — features iterated weekly from student feedback.</div>
             <ul class="project-features">
-              <li>Interactive AI study companion dashboard answering curriculum questions.</li>
+              <li>RAG study companion: syllabi chunked and embedded (text-embedding-3), retrieved from MongoDB Atlas Vector Search so every answer is grounded in the source.</li>
               <li>Automated CBT (Computer Based Testing) mock exams with detailed explanations.</li>
               <li>Dynamic flashcards and AI study planners personalized to student strengths.</li>
               <li>Student performance trackers mapping progress against actual exam syllabi.</li>
@@ -279,7 +280,7 @@
               <span>React</span>
               <span>FastAPI</span>
               <span>OpenAI API</span>
-              <span>MongoDB</span>
+              <span>Atlas Vector Search</span>
               <span>Vercel</span>
             </div>
             <div class="project-links">
@@ -662,7 +663,7 @@
         <div class="skills-cat reveal reveal-delay-1">
           <h3 class="skills-cat-title"><i class="fas fa-robot"></i> LLM Systems</h3>
           <div class="skill-tags">
-            <span>OpenAI SDK / Responses API</span><span>Anthropic Claude SDK</span><span>Google Gemini</span><span>LangGraph</span><span>LangChain</span><span>Agents &amp; tool calling</span><span>Prompt &amp; context engineering</span><span>RAG</span><span>Embeddings &amp; vector databases</span><span>Structured outputs</span><span>LLM evals &amp; observability</span><span>MediaPipe (on-device CV)</span>
+            <span>OpenAI SDK / Responses API</span><span>Anthropic Claude SDK</span><span>Google Gemini</span><span>LangGraph</span><span>LangChain</span><span>Agents &amp; tool calling</span><span>Prompt &amp; context engineering</span><span>RAG (text-embedding-3 + Atlas Vector Search)</span><span>Chunking &amp; retrieval tuning</span><span>Structured outputs</span><span>LLM evals (golden sets, LLM-as-judge)</span><span>Guardrail &amp; prompt-injection testing</span><span>MediaPipe (on-device CV)</span>
           </div>
         </div>
 
