@@ -1561,3 +1561,25 @@ footer {
     left: 2rem;
   }
 }
+
+/* ---------- FDE reframe: deployment context line on project cards ---------- */
+.project-deploy {
+  display: flex; gap: 0.6rem; align-items: flex-start;
+  background: var(--accent-soft); color: var(--text-secondary);
+  border-left: 3px solid var(--accent); border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  padding: 0.6rem 0.9rem; font-size: 0.85rem; line-height: 1.5; margin-bottom: 1.25rem;
+}
+.project-deploy i { color: var(--accent); margin-top: 0.2rem; flex-shrink: 0; }
+
+/* ---------- Skills as tag groups (replaces percentage bars) ---------- */
+.skills-cat .skills-cat-title + .skill-tags { margin-bottom: 1.5rem; }
+.skills-cat .skill-tags:last-child { margin-bottom: 0; }
+.skill-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.skill-tags span {
+  display: inline-flex; align-items: center; gap: 0.4rem;
+  background: var(--bg-tertiary); color: var(--text-primary);
+  border: 1px solid var(--border); border-radius: var(--radius-full);
+  padding: 0.35rem 0.8rem; font-size: 0.82rem; font-weight: 500;
+  transition: var(--transition-fast);
+}
+.skill-tags span:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-soft); }
