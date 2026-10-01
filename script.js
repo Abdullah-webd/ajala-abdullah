@@ -185,16 +185,51 @@ document.addEventListener('DOMContentLoaded', () => {
   const submitBtn = document.getElementById('submit-btn');
   
   if (contactForm && submitBtn) {
+    // Bot protection: the API rejects submissions that arrive faster than a person can type
+    const formLoadedAt = Date.now();
+
+    // Cloudflare Turnstile loads only once a site key is set on #turnstile-widget
+    const turnstileEl = document.getElementById('turnstile-widget');
+    const turnstileSiteKey = turnstileEl ? turnstileEl.getAttribute('data-sitekey') : '';
+    let turnstileWidgetId = null;
+
+    if (turnstileSiteKey) {
+      window.onTurnstileLoad = () => {
+        turnstileWidgetId = window.turnstile.render('#turnstile-widget', {
+          sitekey: turnstileSiteKey,
+          theme: 'light'
+        });
+      };
+      const turnstileScript = document.createElement('script');
+      turnstileScript.src = 'https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit&onload=onTurnstileLoad';
+      turnstileScript.async = true;
+      turnstileScript.defer = true;
+      document.head.appendChild(turnstileScript);
+    }
+
     contactForm.addEventListener('submit', async (e) => {
       e.preventDefault();
-      
+
       const originalContent = submitBtn.innerHTML;
-      
+
       // Get form values
       const name = document.getElementById('name').value;
       const email = document.getElementById('email').value;
       const message = document.getElementById('message').value;
-      
+      const website = document.getElementById('website').value; // honeypot, stays empty for people
+      const elapsed = Date.now() - formLoadedAt;
+      const turnstileToken = turnstileWidgetId !== null ? window.turnstile.getResponse(turnstileWidgetId) : '';
+
+      if (turnstileSiteKey && !turnstileToken) {
+        submitBtn.innerHTML = '<i class="fas fa-shield-alt"></i> Complete the check above';
+        submitBtn.style.backgroundColor = '#ef4444';
+        setTimeout(() => {
+          submitBtn.innerHTML = originalContent;
+          submitBtn.style.backgroundColor = '';
+        }, 2500);
+        return;
+      }
+
       // Loading State
       submitBtn.disabled = true;
       submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
@@ -206,7 +241,7 @@ document.addEventListener('DOMContentLoaded', () => {
           headers: {
             'Content-Type': 'application/json'
           },
-          body: JSON.stringify({ name, email, message })
+          body: JSON.stringify({ name, email, message, website, elapsed, turnstileToken })
         });
         
         const data = await response.json();
@@ -228,6 +263,10 @@ document.addEventListener('DOMContentLoaded', () => {
         submitBtn.style.backgroundColor = '#ef4444'; // Red
         console.error(error);
       } finally {
+        // Turnstile tokens are single-use, so issue a fresh one for the next attempt
+        if (turnstileWidgetId !== null) {
+          window.turnstile.reset(turnstileWidgetId);
+        }
         // Reset button after 3.5 seconds
         setTimeout(() => {
           submitBtn.disabled = false;

@@ -1583,3 +1583,16 @@ footer {
   transition: var(--transition-fast);
 }
 .skill-tags span:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-soft); }
+
+/* ---------- Contact form bot protection ---------- */
+/* Honeypot: kept off-screen instead of display:none, which some bots detect and skip */
+.form-hp {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+.turnstile-widget:not(:empty) {
+  margin-bottom: 1.5rem;
+}
