@@ -1,6 +1,6 @@
 # Ajala Abdullah Portfolio
 
-A modern, responsive portfolio for a Forward Deployed Engineer and AI Engineer — showcasing production software (RelayFlow, TrustBridge AI, PayWise, Study Master, My School Manager, KizFarm, Naira Games), hackathon results, press coverage, and certifications.
+A modern, responsive portfolio for an AI Engineer and Web Developer — showcasing production software (RelayFlow, TrustBridge AI, PayWise, Study Master, My School Manager, KizFarm, Naira Games), hackathon results, press coverage, and certifications.
 
 Live: **https://www.ajalaabdullah.dev**
 

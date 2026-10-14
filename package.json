@@ -1,7 +1,7 @@
 {
   "name": "ajala-abdullah-portfolio",
   "version": "2.0.0",
-  "description": "Portfolio of Ajala Abdullah \u2014 static site with a serverless contact form (Resend)",
+  "description": "Portfolio of Ajala Abdullah — static site with a serverless contact form (Resend)",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
@@ -12,5 +12,8 @@
     "dotenv": "^17.4.2",
     "express": "^4.21.0",
     "resend": "^4.0.0"
+  },
+  "devDependencies": {
+    "playwright": "^1.64.0"
   }
 }
