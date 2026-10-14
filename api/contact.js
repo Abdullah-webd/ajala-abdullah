@@ -92,7 +92,7 @@ module.exports = async (req, res) => {
   try {
     const { data, error } = await resend.emails.send({
       from: 'Ajala Abdullah Portfolio <contact@ajalaabdullah.dev>',
-      to: 'webmastersmma@gmail.com',
+      to: 'abdullahajala60@gmail.com',
       replyTo: email.trim(),
       subject: `New Portfolio Message from ${name.trim().replace(/[\r\n]+/g, ' ')}`,
       html: `
